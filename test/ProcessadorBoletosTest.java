@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,10 +9,16 @@ import java.util.List;
 
 class ProcessadorBoletosTest {
 
+	private ProcessadorBoletos processador;
+	
+	@BeforeEach()
+	public void init() {
+		ProcessadorBoletos processador = new ProcessadorBoletos();
+	}
+	
 	@Test
 	@DisplayName("Testa se boletos cuja soma de valores pagos é igual ao valor da fatura resulta em fatura paga")
 	void TestaFaturaPagaParaValoresIguais() {
-		ProcessadorBoletos processador = new ProcessadorBoletos();
 		Fatura fatura = new Fatura(new Date(), 3000, "Eduardo Lara");
 		Boleto boletoA = new Boleto(new Date(), 2000);
 		Boleto boletoB = new Boleto(new Date(), 1000);
