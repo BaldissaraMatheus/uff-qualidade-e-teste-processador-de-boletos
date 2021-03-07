@@ -16,8 +16,9 @@ class ProcessadorBoletosTest {
 		Boleto boletoA = new Boleto(new Date(), 2000);
 		Boleto boletoB = new Boleto(new Date(), 1000);
 		List<Boleto> boletos = new ArrayList<Boleto>();
-		Pagamento pagamento = processador.pagaFatura(fatura, boletos);
-		Assertions.assertEquals(fatura.status, FaturaStatus.PAGO);
+		Pagamento pagamento = processador.geraPagamento(boletos);
+		fatura.pagaFatura(pagamento);
+		Assertions.assertEquals(fatura.getStatus(), FaturaStatus.PAGO);
 	}
 	
 	@Test
