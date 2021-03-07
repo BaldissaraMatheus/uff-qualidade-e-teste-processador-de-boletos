@@ -59,9 +59,15 @@ class ProcessadorBoletosTest {
 	}
 	
 	@Test
-	@DisplayName("Testa se fatura possui o tipo correto de pagamento")
+	@DisplayName("Testa se pagamento possui o tipo correto de pagamento")
 	void TestaTipoDePagamento() {
-		Assertions.fail();
+		Fatura fatura = new Fatura(new Date(), 3000, "Eduardo Lara");
+		Boleto boletoA = new Boleto(new Date(), 5000);
+		List<Boleto> boletos = new ArrayList<Boleto>();
+		boletos.add(boletoA);
+		Pagamento pagamento = processador.geraPagamento(boletos);
+		Assertions.assertEquals(pagamento.getFormaPagamento(), FormaPagamento.BOLETO);
+		Assertions.assertNotEquals(pagamento.getFormaPagamento(), FormaPagamento.CARTAO);
 	}
 
 }

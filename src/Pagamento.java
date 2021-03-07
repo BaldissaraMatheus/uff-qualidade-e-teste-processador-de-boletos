@@ -16,4 +16,8 @@ public class Pagamento {
 		return this.valorTotal;
 	}
 
+	public FormaPagamento getFormaPagamento() {
+		return this.formaPagamento;
+	}
+
 }
