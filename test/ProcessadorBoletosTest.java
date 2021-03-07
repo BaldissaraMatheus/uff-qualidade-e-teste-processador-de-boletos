@@ -13,7 +13,7 @@ class ProcessadorBoletosTest {
 	
 	@BeforeEach()
 	public void init() {
-		ProcessadorBoletos processador = new ProcessadorBoletos();
+		processador = new ProcessadorBoletos();
 	}
 	
 	@Test
