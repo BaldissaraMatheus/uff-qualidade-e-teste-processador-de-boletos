@@ -1,12 +1,17 @@
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Assertions;
 
 import org.junit.jupiter.api.Test;
 
 class ProcessadorBoletosTest {
 
 	@Test
-	void pagaFatura() {
-
+	void TestaSeBoletosResultamCorretamenteEmFaturaPaga() {
+		Assertions.fail();
+	}
+	
+	@Test
+	void TestaSeBoletosResultamCorretamenteEmFaturaNaoPaga() {
+		Assertions.fail();
 	}
 
 }
