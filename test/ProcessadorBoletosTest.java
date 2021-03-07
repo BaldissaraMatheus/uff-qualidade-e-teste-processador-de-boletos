@@ -31,7 +31,13 @@ class ProcessadorBoletosTest {
 	@Test
 	@DisplayName("Testa se boletos cuja soma de valores pagos é maior que valor da fatura resulta em fatura paga")
 	void TestaFaturaPagaParaValoresMaiores() {
-		Assertions.fail();
+		Fatura fatura = new Fatura(new Date(), 3000, "Eduardo Lara");
+		Boleto boletoA = new Boleto(new Date(), 5000);
+		Boleto boletoB = new Boleto(new Date(), 5000);
+		List<Boleto> boletos = new ArrayList<Boleto>();
+		Pagamento pagamento = processador.geraPagamento(boletos);
+		fatura.pagaFatura(pagamento);
+		Assertions.assertEquals(fatura.getStatus(), FaturaStatus.PAGO);
 	}
 	
 	@Test
