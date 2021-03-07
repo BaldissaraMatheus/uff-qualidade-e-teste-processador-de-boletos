@@ -22,7 +22,11 @@ public class Fatura {
 	}
 
 	public void pagaFatura(Pagamento pagamento) {
-		this.status = FaturaStatus.PAGO;
+		if (pagamento.getValorTotal() >= this.valor) {
+			this.status = FaturaStatus.PAGO;
+		} else {
+			this.status = FaturaStatus.NAO_PAGO;
+		}
 	}
 
 }

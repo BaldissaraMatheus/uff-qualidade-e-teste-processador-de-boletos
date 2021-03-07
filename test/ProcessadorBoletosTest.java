@@ -23,6 +23,8 @@ class ProcessadorBoletosTest {
 		Boleto boletoA = new Boleto(new Date(), 2000);
 		Boleto boletoB = new Boleto(new Date(), 1000);
 		List<Boleto> boletos = new ArrayList<Boleto>();
+		boletos.add(boletoA);
+		boletos.add(boletoB);
 		Pagamento pagamento = processador.geraPagamento(boletos);
 		fatura.pagaFatura(pagamento);
 		Assertions.assertEquals(fatura.getStatus(), FaturaStatus.PAGO);
@@ -35,6 +37,8 @@ class ProcessadorBoletosTest {
 		Boleto boletoA = new Boleto(new Date(), 5000);
 		Boleto boletoB = new Boleto(new Date(), 5000);
 		List<Boleto> boletos = new ArrayList<Boleto>();
+		boletos.add(boletoA);
+		boletos.add(boletoB);
 		Pagamento pagamento = processador.geraPagamento(boletos);
 		fatura.pagaFatura(pagamento);
 		Assertions.assertEquals(fatura.getStatus(), FaturaStatus.PAGO);
@@ -43,7 +47,15 @@ class ProcessadorBoletosTest {
 	@Test
 	@DisplayName("Testa se boletos cuja soma de valores pagos é menor que o valor da fatura resulta em fatura paga")
 	void TestaFaturaPagaParaValoresMenores() {
-		Assertions.fail();
+		Fatura fatura = new Fatura(new Date(), 3000, "Eduardo Lara");
+		Boleto boletoA = new Boleto(new Date(), 500);
+		Boleto boletoB = new Boleto(new Date(), 500);
+		List<Boleto> boletos = new ArrayList<Boleto>();
+		boletos.add(boletoA);
+		boletos.add(boletoB);
+		Pagamento pagamento = processador.geraPagamento(boletos);
+		fatura.pagaFatura(pagamento);
+		Assertions.assertEquals(fatura.getStatus(), FaturaStatus.NAO_PAGO);
 	}
 	
 	@Test
